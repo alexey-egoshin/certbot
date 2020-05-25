@@ -5,7 +5,16 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(testpwa.kuzovkov12.ru)
+DOMAIN=indexaco.kuzovkov12.ru
+
+if [[ "$1" == "" ]]; then
+   domains=($DOMAIN)
+else
+   domains=($1)
+fi
+echo "DOMAIN=$domains"
+
+
 rsa_key_size=4096
 data_path="./docker/certbot"
 email="admin@double.systems" # Adding a valid address is strongly recommended
